@@ -20,7 +20,8 @@ export class CustomerAppService {
     }
     
     static async findAll() {
-
+        const customerRepository = new CustomerRepository();
+        return await customerRepository.findAllDb();
     }
 
     static async count() {

@@ -22,8 +22,8 @@ export class CustomerDTO {
         const customerDto = new CustomerDTO(dataCustomer.name, new Date(dataCustomer.birthdate), dataCustomer.genre);
         customerDto.id = dataCustomer.id;
         customerDto.only18Plus = dataCustomer.only18Plus;
-        customerDto.addresses = dataCustomer.addresses || [];
-        customerDto.orders = dataCustomer.orders || [];
+        customerDto.addresses = dataCustomer.addresses;
+        customerDto.orders = dataCustomer.orders;
         return customerDto;
     }
 
@@ -34,8 +34,8 @@ export class CustomerDTO {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            address: this.addresses || [],
-            orders: this.orders || []
+            addresses: {create: this.addresses },
+            orders: {create: this.orders }
         }
     }
 
@@ -43,8 +43,8 @@ export class CustomerDTO {
         const customerDto = new CustomerDTO(dataCustomer.name, new Date(dataCustomer.birthdate), dataCustomer.genre);
         customerDto.id = dataCustomer.id;
         customerDto.only18Plus = dataCustomer.only18Plus;
-        customerDto.addresses = dataCustomer.addresses || [];
-        customerDto.orders = dataCustomer.orders || [];
+        customerDto.addresses = dataCustomer.addresses;
+        customerDto.orders = dataCustomer.orders;
         return customerDto;
     }
 
@@ -55,8 +55,8 @@ export class CustomerDTO {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            address: this.addresses || [],
-            orders: this.orders || []
+            addresses: this.addresses,
+            orders: this.orders
         }
     }
 }

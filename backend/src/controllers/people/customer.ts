@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { CustomerAppService } from '../../services/people/customer';
 
 export class CustomerController {
-    static async save (request: FastifyRequest, reply: FastifyReply) {
+    static async save(request: FastifyRequest, reply: FastifyReply) {
         try {
             return CustomerAppService.save(request.body);
         } catch (e) {
@@ -11,7 +11,7 @@ export class CustomerController {
         }
     }
 
-    static async remove (request: FastifyRequest, reply: FastifyReply) {
+    static async remove(request: FastifyRequest, reply: FastifyReply) {
         try {
             return CustomerAppService.remove(request.params);
         } catch (e) {
@@ -20,7 +20,7 @@ export class CustomerController {
         }
     }
 
-    static async findById (request: FastifyRequest, reply: FastifyReply) {
+    static async findById(request: FastifyRequest, reply: FastifyReply) {
         try {
             return CustomerAppService.findById(request.params);
         } catch (e) {
@@ -29,7 +29,7 @@ export class CustomerController {
         }
     }
 
-    static async findAll (request: FastifyRequest, reply: FastifyReply) {
+    static async findAll(request: FastifyRequest, reply: FastifyReply) {
         try {
             return CustomerAppService.findAll();
         } catch (e) {
@@ -38,9 +38,9 @@ export class CustomerController {
         }
     }
 
-    static async count (request: FastifyRequest, reply: FastifyReply) {
+    static async count(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerAppService.save(request.body);
+            return CustomerAppService.count();
         } catch (e) {
             reply.code(400);
             return e;

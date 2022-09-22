@@ -3,11 +3,11 @@ import { Address } from '../vo/address';
 
 export abstract class Person {
 
-    protected id?: string;
+    protected id: string | undefined;
     protected name: string;
-    protected genre?: Genre;
+    protected genre: Genre | undefined;
     protected birthdate: Date;
-    protected addresses: Address[];
+    protected addresses: Address[] | undefined;
 
     constructor(name: string, birthdate: Date);
 
@@ -28,6 +28,6 @@ export abstract class Person {
     }
 
     addAddress(address: Address) {
-        this.addresses.push(address);
+        if(this.addresses) this.addresses.push(address);
     }
 }

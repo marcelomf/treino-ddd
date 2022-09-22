@@ -4,7 +4,10 @@ export class CustomerDAO extends Orm implements PersistenceDb {
 
     async saveDb(customerDto: CustomerDTO) {
         await this.prisma.customer.create({
-            data: customerDto.toORM()
+            data: customerDto.toORM(),
+            include: {
+                addresses: true
+            }
         });
     }
 
@@ -17,7 +20,11 @@ export class CustomerDAO extends Orm implements PersistenceDb {
     }
 
     async findAllDb() {
-        return await this.prisma.customer.findMany();
+        return await this.prisma.customer.findMany({
+            include: {
+                addresses: true
+            }
+        });
     }
     
     async countDb() {
