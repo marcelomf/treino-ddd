@@ -3,8 +3,8 @@ import {Provider} from '../src/contexts/people/entities/provider';
 import {Customer} from '../src/contexts/people/entities/customer';
 import {Order} from '../src/contexts/sales/entities/order';
 import {Genre} from '../src/contexts/people/vo/genre';
-import { CustomerDTO } from '../src/contexts/people/dto/customer_dto';
-import { ProviderDTO } from '../src/contexts/people/dto/provider_dto';
+import { CustomerDTO } from '../src/contexts/people/dto/customer';
+import { ProviderDTO } from '../src/contexts/people/dto/provider';
 
 describe('provider entity', () => {
   test('rating provider', () => {

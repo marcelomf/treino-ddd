@@ -2,7 +2,7 @@ import {describe, expect, test} from '@jest/globals';
 import { Customer } from '../src/contexts/people/entities/customer';
 import { Order } from '../src/contexts/sales/entities/order';
 import { Genre } from '../src/contexts/people/vo/genre';
-import { CustomerDTO } from '../src/contexts/people/dto/customer_dto';
+import { CustomerDTO } from '../src/contexts/people/dto/customer';
 
 describe('customer entity', () => {
   test('rating customer', () => {

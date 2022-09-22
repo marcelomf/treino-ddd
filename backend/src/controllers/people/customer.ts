@@ -1,10 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { CustomerService } from '../../services/people/customer';
+import { CustomerAppService } from '../../services/people/customer';
 
 export class CustomerController {
     static async save (request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerService.save(request.body);
+            return CustomerAppService.save(request.body);
         } catch (e) {
             reply.code(400);
             return e;
@@ -13,7 +13,7 @@ export class CustomerController {
 
     static async remove (request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerService.remove(request.params);
+            return CustomerAppService.remove(request.params);
         } catch (e) {
             reply.code(400);
             return e;
@@ -22,7 +22,7 @@ export class CustomerController {
 
     static async findById (request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerService.findById(request.params);
+            return CustomerAppService.findById(request.params);
         } catch (e) {
             reply.code(400);
             return e;
@@ -31,7 +31,7 @@ export class CustomerController {
 
     static async findAll (request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerService.findAll();
+            return CustomerAppService.findAll();
         } catch (e) {
             reply.code(400);
             return e;
@@ -40,7 +40,7 @@ export class CustomerController {
 
     static async count (request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerService.save(request.body);
+            return CustomerAppService.save(request.body);
         } catch (e) {
             reply.code(400);
             return e;
