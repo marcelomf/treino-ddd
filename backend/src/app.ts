@@ -34,6 +34,11 @@ const app: FastifyPluginAsync<AppOptions> = async (
     options: opts
   })
 
+  void fastify.register(AutoLoad, {
+    dir: join(__dirname, 'routes', 'people'),
+    options: opts
+  })
+
 };
 
 export default app;

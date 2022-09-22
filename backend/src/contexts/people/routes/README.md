@@ -1,1 +1,0 @@
-routes define http routes of entrypoint data received by UI(User Interface).

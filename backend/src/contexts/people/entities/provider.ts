@@ -2,15 +2,24 @@ import { Person } from './person';
 import { Customer } from './customer';
 import { CustomerService } from './customer_service';
 import { Order } from '../../sales/entities/order';
+import { ProviderDTO } from '../dto/provider';
 
 export class Provider extends Person implements CustomerService {
     
     customers?: Customer[];
     complaints: string[];
 
-    constructor(name: string, birthdate: Date) {
-        super(name, birthdate);
+    constructor(providerDto: ProviderDTO) {
+        super(providerDto.name, providerDto.birthdate);
         this.complaints = [];
+    }
+
+    toDto() {
+        const providerDto = new ProviderDTO(this.name, this.birthdate);
+        providerDto.id = this.id;
+        providerDto.customers != this.customers;
+        providerDto.complaints = this.complaints;
+        return providerDto;
     }
 
     addCustomer(customer: Customer){
