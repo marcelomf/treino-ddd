@@ -1,2 +1,2 @@
 # treino-ddd
-DDD, SOLID, DTO, DAO with typescript and prisma
+DDD, SOLID, CLEAN, TDD, DTO, DAO, ORM, RESTFUL with typescript, fastify and prisma.
