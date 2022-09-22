@@ -1,26 +1,27 @@
-import { PersistenceDb } from "../../../utils/persistence_db";
+import { PersistenceDb, Orm } from "../../../utils/persistence_db";
 import { CustomerDTO } from "../dto/customer";
+export class CustomerDAO extends Orm implements PersistenceDb {
 
-export class CustomerDAO implements PersistenceDb {
+    async saveDb(customerDto: CustomerDTO) {
+        await this.prisma.customer.create({
+            data: customerDto.toORM()
+        });
+    }
 
-    saveDb(customerDto: CustomerDTO) {
+    async deleteDb(customerId: string) {
 
     }
 
-    deleteDb(customerId: string) {
-
-    }
-
-    findByIdDb(customerId: string) {
+    async findByIdDb(customerId: string) {
         return []
     }
 
-    findAllDb() {
-        return []
+    async findAllDb() {
+        return await this.prisma.customer.findMany();
     }
     
-    countDb() {
-        return 0
+    async countDb() {
+        return await this.prisma.customer.count();
     }
 
 }

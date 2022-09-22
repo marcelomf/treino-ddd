@@ -24,6 +24,7 @@ export class CustomerAppService {
     }
 
     static async count() {
-
+        const customerRepository = new CustomerRepository();
+        return await customerRepository.countDb();
     }
 }

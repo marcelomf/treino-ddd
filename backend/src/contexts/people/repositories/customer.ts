@@ -1,28 +1,29 @@
-import { PersistenceDb } from "../../../utils/persistence_db";
 import { CustomerDAO } from "../dao/customer";
 import { CustomerDTO } from "../dto/customer";
 
-export class CustomerRepository implements PersistenceDb {
+export class CustomerRepository {
+
+    customerDao: CustomerDAO = new CustomerDAO();
     
-    saveDb(customerDto: CustomerDTO) {
-        const customerDao = new CustomerDAO();
-        customerDao.saveDb(customerDto);
+    async saveDb(customerDto: CustomerDTO) {
+        await this.customerDao.saveDb(customerDto);
     }
 
-    deleteDb(customerId: string) {
+    async deleteDb(customerId: string) {
 
     }
 
-    findByIdDb(customerId: string) {
+    async findByIdDb(customerId: string) {
         return []
     }
 
-    findAllDb() {
-        return []
+    async findAllDb() {
+        let result = await this.customerDao.findAllDb() as unknown as CustomerDTO[];
+        return result;
     }
     
-    countDb() {
-        return 0
+    async countDb() {
+        return await this.customerDao.countDb();
     }
     
 }
