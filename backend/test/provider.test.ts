@@ -31,7 +31,7 @@ describe('provider entity', () => {
     provider.addComplaint(new Customer("Marcelo", new Date("1986-01-20"), Genre.MALE), "Pedido veio estragado!");
     provider.addComplaint(new Customer("Valentina", new Date("2011-09-15"), Genre.FEMALE), "Pedido veio estragado!");
     provider.addComplaint(new Customer("Carol", new Date("1994-01-15"), Genre.FEMALE), "Pedido veio estragado!");
-    expect(() => provider.processSale()).toThrow("Provider can't be able to process sale. Excepted numbers(3) of complaints!");
+    expect(() => provider.processSale(new Order())).toThrow("Provider can't be able to process sale. Excepted max numbers(3) of complaints!");
   });
 
 });

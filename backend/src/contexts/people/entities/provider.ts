@@ -1,6 +1,7 @@
 import { Person } from './person';
 import { Customer } from './customer';
 import { CustomerService } from './customer_service';
+import { Order } from '../../sales/entities/order';
 
 export class Provider extends Person implements CustomerService {
     
@@ -30,9 +31,9 @@ export class Provider extends Person implements CustomerService {
         return totalOrders;
     }
 
-    processSale() {
+    processSale(order: Order) {
         if(this.complaints && this.complaints.length >= 3) {
-            throw new Error("Provider can't be able to process sale. Excepted numbers(3) of complaints!");
+            throw new Error("Provider can't be able to process sale. Excepted max numbers(3) of complaints!");
         }
     }
 }
