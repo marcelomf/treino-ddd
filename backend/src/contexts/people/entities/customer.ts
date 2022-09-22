@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 export class Customer extends Person {
     
     private only18Plus?: boolean;
-    private orders?: Order[];
+    protected orders?: Order[];
 
     constructor(name: string, birthdate: Date, genre: Genre);
 
