@@ -1,8 +1,8 @@
 import {OrderItem} from './order_item';
 
 export class Order {
-    private id?: string;
-    private items?: OrderItem[];
+    protected id?: string;
+    protected items?: OrderItem[];
 
     constructor() {
 

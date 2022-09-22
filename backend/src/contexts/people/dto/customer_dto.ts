@@ -7,7 +7,7 @@ export class CustomerDTO extends Customer {
         this.name = dataProvider.name;
         this.birthdate = dataProvider.birthdate;
         this.genre = dataProvider.genre;
-        this.addresses = dataProvider.addresses;
+        this.addresses = dataProvider.addresses || [];
         this.orders = dataProvider.orders || [];
     }
 
@@ -17,8 +17,8 @@ export class CustomerDTO extends Customer {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            address: this.addresses,
-            orders: this.orders
+            address: this.addresses || [],
+            orders: this.orders || []
         }
     }
 
@@ -27,7 +27,7 @@ export class CustomerDTO extends Customer {
         this.name = dataProvider.name;
         this.birthdate = dataProvider.birthdate;
         this.genre = dataProvider.genre;
-        this.addresses = dataProvider.addresses;
+        this.addresses = dataProvider.addresses || [];
         this.orders = dataProvider.orders || [];
     }
 
@@ -37,8 +37,8 @@ export class CustomerDTO extends Customer {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            address: this.addresses,
-            orders: this.orders
+            address: this.addresses || [],
+            orders: this.orders || []
         }
     }
 }

@@ -1,7 +1,7 @@
 export class OrderItem {
-    private id?: string;
-    private name: string;
-    private price: number;
+    protected id?: string;
+    protected name: string;
+    protected price: number;
 
     constructor(name: string, price: number) {
         this.name = name;

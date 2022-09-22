@@ -18,9 +18,9 @@ export class ProviderDTO extends Provider {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            address: this.addresses,
-            customers: this.customers,
-            complaints: this.complaints,
+            addresses: this.addresses || [],
+            customers: this.customers || [],
+            complaints: this.complaints || [],
         }
     }
 
@@ -40,9 +40,9 @@ export class ProviderDTO extends Provider {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            address: this.addresses,
-            customers: this.customers,
-            complaints: this.complaints,
+            addresses: this.addresses || [],
+            customers: this.customers || [],
+            complaints: this.complaints || [],
         }
     }
 
