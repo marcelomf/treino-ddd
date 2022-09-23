@@ -1,3 +1,33 @@
-export class ProviderRepository {
+import { CustomerDAO } from "../dao/customer";
+import { CustomerDTO } from "../dto/customer";
+
+export class CustomerRepository {
+
+    customerDao: CustomerDAO;
+
+    constructor() {
+        this.customerDao = new CustomerDAO();
+    }
+    
+    async saveDb(customerDto: CustomerDTO) {
+        return await this.customerDao.saveDb(customerDto);
+    }
+
+    async removeDb(customerId: string) {
+        return await this.customerDao.removeDb(customerId);
+    }
+
+    async findByIdDb(customerId: string): Promise<CustomerDTO> {
+        return await this.customerDao.findByIdDb(customerId) as unknown as CustomerDTO;
+    }
+
+    async findAllDb(): Promise<CustomerDTO[]> {
+        let result = await this.customerDao.findAllDb() as unknown as CustomerDTO[];
+        return result;
+    }
+    
+    async countDb() {
+        return await this.customerDao.countDb();
+    }
     
 }

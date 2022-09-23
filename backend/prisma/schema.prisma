@@ -39,16 +39,17 @@ model OrderItem {
 model Order {
   id        String   @id @default(uuid())
   items     OrderItem[]
+  total     Decimal
   customer  Customer  @relation(fields: [customer_id], references: [id])
   customer_id String
+  provider  Provider  @relation(fields: [provider_id], references: [id])
+  provider_id String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Customer {
   id        String   @id @default(uuid())
-  provider  Provider?  @relation(fields: [provider_id], references: [id])
-  provider_id String?
   name      String   
   birthdate DateTime
   genre     String
@@ -63,6 +64,8 @@ model Complaint {
   id        String    @id @default(uuid())
   customer  Customer  @relation(fields: [customer_id], references: [id])
   customer_id String
+  provider  Provider  @relation(fields: [provider_id], references: [id])
+  provider_id String
   content   String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -73,7 +76,8 @@ model Provider {
   name      String
   birthdate DateTime
   addresses Address[]
-  customers Customer[]
+  orders    Order[]
+  complaints Complaint[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }

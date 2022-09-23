@@ -17,9 +17,9 @@ export class ProviderDTO {
     static fromORM(dataProvider: any) {
         const provider = new ProviderDTO(dataProvider.name, dataProvider.birthdate);
         provider.id = dataProvider.id;
-        provider.addresses = dataProvider.addresses || [];
-        provider.customers = dataProvider.customers || [];
-        provider.complaints = dataProvider.complaints || [];
+        provider.addresses = dataProvider.addresses;
+        provider.customers = dataProvider.customers;
+        provider.complaints = dataProvider.complaints;
         return provider;
     }
 
@@ -28,18 +28,18 @@ export class ProviderDTO {
             id: this.id,
             name: this.name,
             birthdate: this.birthdate,
-            addresses: this.addresses || [],
-            customers: this.customers || [],
-            complaints: this.complaints || [],
+            addresses: { create: this.addresses },
+            customers: { create: this.customers },
+            complaints: { create: this.complaints },
         }
     }
 
     static fromUI(dataProvider: any) {
         const provider = new ProviderDTO(dataProvider.name, dataProvider.birthdate);
         provider.id = dataProvider.id;
-        provider.addresses = dataProvider.addresses || [];
-        provider.customers = dataProvider.customers || [];
-        provider.complaints = dataProvider.complaints || [];
+        provider.addresses = dataProvider.addresses;
+        provider.customers = dataProvider.customers;
+        provider.complaints = dataProvider.complaints;
         return provider;
     }
 
@@ -48,9 +48,9 @@ export class ProviderDTO {
             id: this.id,
             name: this.name,
             birthdate: this.birthdate,
-            addresses: this.addresses || [],
-            customers: this.customers || [],
-            complaints: this.complaints || [],
+            addresses: this.addresses,
+            customers: this.customers,
+            complaints: this.complaints,
         }
     }
 

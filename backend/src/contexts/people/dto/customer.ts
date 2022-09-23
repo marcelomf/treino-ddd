@@ -34,8 +34,8 @@ export class CustomerDTO {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            addresses: {create: this.addresses },
-            orders: {create: this.orders }
+            addresses: { create: this.addresses },
+            orders: { create: this.orders }
         }
     }
 
