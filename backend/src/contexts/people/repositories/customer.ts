@@ -3,14 +3,18 @@ import { CustomerDTO } from "../dto/customer";
 
 export class CustomerRepository {
 
-    customerDao: CustomerDAO = new CustomerDAO();
+    customerDao: CustomerDAO;
+
+    constructor() {
+        this.customerDao = new CustomerDAO();
+    }
     
     async saveDb(customerDto: CustomerDTO) {
-        await this.customerDao.saveDb(customerDto);
+        return await this.customerDao.saveDb(customerDto);
     }
 
     async removeDb(customerId: string) {
-        await this.customerDao.removeDb(customerId);
+        return await this.customerDao.removeDb(customerId);
     }
 
     async findByIdDb(customerId: string): Promise<CustomerDTO> {

@@ -7,12 +7,12 @@ export class CustomerAppService {
         const customerDto = CustomerDTO.fromUI(dataCustomerUI);
         const customer = new Customer(customerDto);
         const customerRepository = new CustomerRepository();
-        customerRepository.saveDb(customer.toDto());
+        return await customerRepository.saveDb(customer.toDto());
     }
 
     static async remove(customerParams: any) {
         const customerRepository = new CustomerRepository();
-        customerRepository.removeDb(customerParams.id);
+        return await customerRepository.removeDb(customerParams.id);
     }
 
     static async findById(customerParams: any) {

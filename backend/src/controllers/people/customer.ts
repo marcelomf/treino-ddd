@@ -4,7 +4,7 @@ import { CustomerAppService } from '../../services/people/customer';
 export class CustomerController {
     static async save(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerAppService.save(request.body);
+            return await CustomerAppService.save(request.body);
         } catch (e) {
             reply.code(400);
             return e;
@@ -13,7 +13,7 @@ export class CustomerController {
 
     static async remove(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerAppService.remove(request.params);
+            return await CustomerAppService.remove(request.params);
         } catch (e) {
             reply.code(400);
             return e;
@@ -22,7 +22,7 @@ export class CustomerController {
 
     static async findById(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerAppService.findById(request.params);
+            return await CustomerAppService.findById(request.params);
         } catch (e) {
             reply.code(400);
             return e;
@@ -31,7 +31,7 @@ export class CustomerController {
 
     static async findAll(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerAppService.findAll();
+            return await CustomerAppService.findAll();
         } catch (e) {
             reply.code(400);
             return e;
@@ -40,7 +40,7 @@ export class CustomerController {
 
     static async count(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return CustomerAppService.count();
+            return await CustomerAppService.count();
         } catch (e) {
             reply.code(400);
             return e;

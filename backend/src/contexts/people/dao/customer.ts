@@ -3,7 +3,7 @@ import { CustomerDTO } from "../dto/customer";
 export class CustomerDAO extends Orm implements PersistenceDb {
 
     async saveDb(customerDto: CustomerDTO) {
-        await this.prisma.customer.create({
+        return await this.prisma.customer.create({
             data: customerDto.toORM(),
             include: {
                 addresses: true
@@ -12,9 +12,12 @@ export class CustomerDAO extends Orm implements PersistenceDb {
     }
 
     async removeDb(customerId: string) {
-        await this.prisma.customer.delete({
+        return await this.prisma.customer.delete({
             where:{
                 id: customerId
+            },
+            include: {
+                addresses: true
             }
         })
     }

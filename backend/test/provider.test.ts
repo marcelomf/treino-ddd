@@ -28,7 +28,7 @@ describe('provider entity', () => {
     expect(customer.getRating()).toMatch(/VIP/);
   });
 
-  test('customer over 18 years old', () => {
+  test('provider complaints', () => {
     const provider = new Provider(new ProviderDTO("Loja Cabulosa", new Date("1999-01-20")));
     provider.addComplaint(new Customer(new CustomerDTO("Marcelo", new Date("1986-01-20"), Genre.MALE)), "Pedido veio estragado!");
     provider.addComplaint(new Customer(new CustomerDTO("Valentina", new Date("2011-09-15"), Genre.FEMALE)), "Pedido veio estragado!");
