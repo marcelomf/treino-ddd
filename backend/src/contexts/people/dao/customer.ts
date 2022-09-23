@@ -11,12 +11,23 @@ export class CustomerDAO extends Orm implements PersistenceDb {
         });
     }
 
-    async deleteDb(customerId: string) {
-
+    async removeDb(customerId: string) {
+        await this.prisma.customer.delete({
+            where:{
+                id: customerId
+            }
+        })
     }
 
     async findByIdDb(customerId: string) {
-        return []
+        return await this.prisma.customer.findUnique({
+            where: {
+                id: customerId
+            },
+            include: {
+                addresses: true
+            }
+        })
     }
 
     async findAllDb() {

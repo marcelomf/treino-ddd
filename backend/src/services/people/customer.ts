@@ -12,11 +12,12 @@ export class CustomerAppService {
 
     static async remove(customerParams: any) {
         const customerRepository = new CustomerRepository();
-        customerRepository.deleteDb(customerParams.id);
+        customerRepository.removeDb(customerParams.id);
     }
 
     static async findById(customerParams: any) {
-
+        const customerRepository = new CustomerRepository();
+        return await customerRepository.findByIdDb(customerParams.id);
     }
     
     static async findAll() {
