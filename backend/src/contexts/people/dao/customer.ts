@@ -3,6 +3,11 @@ import { CustomerDTO } from "../dto/customer";
 export class CustomerDAO extends Orm implements PersistenceDb {
 
     async saveDb(customerDto: CustomerDTO) {
+        const dataCustomer = customerDto.toORM();
+        dataCustomer.addresses = { create: dataCustomer.addresses };
+        dataCustomer.orders = { create: dataCustomer.orders };
+        dataCustomer.complaints = { create: dataCustomer.complaints };
+
         return await this.prisma.provider.create({
             data: customerDto.toORM(),
             include: {

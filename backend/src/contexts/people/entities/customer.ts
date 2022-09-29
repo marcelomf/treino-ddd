@@ -3,18 +3,22 @@ import { Order } from '../../sales/entities/order'
 import dayjs from 'dayjs';
 import { CustomerDTO } from '../dto/customer';
 import { OrderDTO } from '../../sales/dto/order';
+import { CustomerService } from './customer_service';
+import { Complaint } from './complaint';
 
-export class Customer extends Person {
+export class Customer extends Person implements CustomerService {
     
     private only18Plus?: boolean;
-    private orders?: Order[] | undefined;
+    private orders: Order[];
+    private complaints: Complaint[];
 
     constructor(customerDto: CustomerDTO) {
         super(customerDto.name, customerDto.birthdate, customerDto.genre);
         this.id = customerDto.id
         this.only18Plus = customerDto.only18Plus;
         this.addresses = customerDto.addresses;
-        this.orders = customerDto.orders as unknown as Order[];
+        this.orders = customerDto.orders as unknown[] as Order[];
+        this.complaints = customerDto.complaints as unknown[] as Complaint[];
 
         if(this.only18Plus) {
             if(dayjs(new Date()).diff(this.birthdate, 'years') < 18) {
@@ -23,12 +27,16 @@ export class Customer extends Person {
         }
     }
 
+    addComplaint(complaint: Complaint){
+        this.complaints.push(complaint);
+    }
+
     toDto() {
         const customerDto = new CustomerDTO(this.name, this.birthdate, this.genre!);
         customerDto.id = this.id;
         customerDto.only18Plus = this.only18Plus;
         customerDto.addresses = this.addresses;
-        customerDto.orders = this.orders as unknown as OrderDTO[];
+        customerDto.orders = this.orders as unknown[] as OrderDTO[];
         return customerDto;
     }
 

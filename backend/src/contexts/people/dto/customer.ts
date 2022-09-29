@@ -1,6 +1,7 @@
 import { OrderDTO } from "../../sales/dto/order";
 import { Address } from "../vo/address";
 import { Genre } from "../vo/genre";
+import { ComplaintDTO } from "./complaint";
 
 export class CustomerDTO {
 
@@ -11,6 +12,7 @@ export class CustomerDTO {
     genre: Genre;
     addresses?: Address[];
     orders?: OrderDTO[];
+    complaints?: ComplaintDTO[];
 
     constructor(name: string, birthdate: Date, genre: Genre) {
         this.name = name;
@@ -24,19 +26,21 @@ export class CustomerDTO {
         customerDto.only18Plus = dataCustomer.only18Plus;
         customerDto.addresses = dataCustomer.addresses;
         customerDto.orders = dataCustomer.orders;
+        customerDto.complaints = dataCustomer.complaints;
         return customerDto;
     }
 
-    toORM() {
+    toORM(): any {
         return {
             id: this.id,
             only18Plus: this.only18Plus,
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            addresses: { create: this.addresses },
-            orders: { create: this.orders }
-        }
+            addresses: this.addresses,
+            orders: this.orders,
+            complaints: this.complaints
+        } as any
     }
 
     static fromUI(dataCustomer: any): CustomerDTO {
@@ -45,6 +49,7 @@ export class CustomerDTO {
         customerDto.only18Plus = dataCustomer.only18Plus;
         customerDto.addresses = dataCustomer.addresses;
         customerDto.orders = dataCustomer.orders;
+        customerDto.complaints = dataCustomer.complaints;
         return customerDto;
     }
 
@@ -56,7 +61,8 @@ export class CustomerDTO {
             birthdate: this.birthdate,
             genre: this.genre,
             addresses: this.addresses,
-            orders: this.orders
+            orders: this.orders,
+            complaints: this.complaints
         }
     }
 }

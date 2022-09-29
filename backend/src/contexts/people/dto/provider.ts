@@ -1,13 +1,14 @@
+import { OrderDTO } from "../../sales/dto/order";
 import { Address } from "../vo/address";
-import { CustomerDTO } from "./customer";
+import { ComplaintDTO } from "./complaint";
 export class ProviderDTO {
 
     id?: string;
     name: string;
     birthdate: Date;
     addresses?: Address[];
-    customers?: CustomerDTO[];
-    complaints?: string[];
+    orders?: OrderDTO[];
+    complaints?: ComplaintDTO[];
 
     constructor(name: string, birthdate: Date) {
         this.name = name;
@@ -15,43 +16,20 @@ export class ProviderDTO {
     }
 
     static fromORM(dataProvider: any) {
-        const provider = new ProviderDTO(dataProvider.name, dataProvider.birthdate);
-        provider.id = dataProvider.id;
-        provider.addresses = dataProvider.addresses;
-        provider.customers = dataProvider.customers;
-        provider.complaints = dataProvider.complaints;
-        return provider;
+        return dataProvider as unknown as ProviderDTO;
     }
 
-    toORM() {
-        return {
-            id: this.id,
-            name: this.name,
-            birthdate: this.birthdate,
-            addresses: { create: this.addresses },
-            customers: { create: this.customers },
-            complaints: { create: this.complaints },
-        }
+    toORM(): any {
+        const objReturn: any = this as any;
+        return objReturn;
     }
 
     static fromUI(dataProvider: any) {
-        const provider = new ProviderDTO(dataProvider.name, dataProvider.birthdate);
-        provider.id = dataProvider.id;
-        provider.addresses = dataProvider.addresses;
-        provider.customers = dataProvider.customers;
-        provider.complaints = dataProvider.complaints;
-        return provider;
+        return dataProvider as unknown as ProviderDTO;
     }
 
     toUI() {
-        return {
-            id: this.id,
-            name: this.name,
-            birthdate: this.birthdate,
-            addresses: this.addresses,
-            customers: this.customers,
-            complaints: this.complaints,
-        }
+        return this as any;
     }
 
 }

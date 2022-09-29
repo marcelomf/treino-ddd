@@ -1,43 +1,42 @@
 import { Person } from './person';
-import { Customer } from './customer';
 import { CustomerService } from './customer_service';
 import { Order } from '../../sales/entities/order';
 import { ProviderDTO } from '../dto/provider';
+import { Complaint } from './complaint';
+import { ComplaintDTO } from '../dto/complaint';
 
 export class Provider extends Person implements CustomerService {
     
-    customers?: Customer[];
-    complaints: string[];
+    private orders: Order[];
+    private complaints: Complaint[];
 
     constructor(providerDto: ProviderDTO) {
         super(providerDto.name, providerDto.birthdate);
-        this.complaints = [];
+        this.id = providerDto.id;
+        this.addresses = providerDto.addresses;
+        this.orders = providerDto.orders as unknown[] as Order[];
+        this.complaints = providerDto.complaints as unknown[] as Complaint[];
     }
 
     toDto() {
         const providerDto = new ProviderDTO(this.name, this.birthdate);
         providerDto.id = this.id;
-        providerDto.customers != this.customers;
-        providerDto.complaints = this.complaints;
+        providerDto.complaints = this.complaints as unknown[] as ComplaintDTO[];
         return providerDto;
     }
 
-    addCustomer(customer: Customer){
-        if(!this.customers) this.customers = [];
-        this.customers.push(customer);
-    }
-
-    addComplaint(customer: Customer, complaint: string){
+    addComplaint(complaint: Complaint){
+        if(!this.complaints) this.complaints = [];
         this.complaints.push(complaint);
     }
 
     totalOrders(){
-        let totalOrders = 0;
-        if(!this.customers) return totalOrders;
-        for(const customer of this.customers) {
-            totalOrders += customer.totalOrders();
-        }
-        return totalOrders;
+        return this.orders.length;
+    }
+
+    addOrder(order: Order) {
+        if(!this.orders) this.orders = [];
+        this.orders.push(order);
     }
 
     processSale(order: Order) {

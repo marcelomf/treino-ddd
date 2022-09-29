@@ -1,6 +1,4 @@
-import {Customer} from './customer';
-
+import { Complaint } from './complaint';
 export interface CustomerService {
-    complaints: string[];
-    addComplaint: (customer: Customer, complaint: string) => void;
+    addComplaint: (complaint: Complaint) => void;
 }
