@@ -2,6 +2,9 @@ import { OrderItemDTO } from "./order_item";
 export class OrderDTO {
 
     id?: string;
+    provider_id?: string;
+    customer_id?: string;
+    total?: number;
     items?: OrderItemDTO[];
 
     static fromORM(dataOrder: any) {
