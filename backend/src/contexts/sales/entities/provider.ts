@@ -22,6 +22,7 @@ export class Provider extends Person implements CustomerService {
     toDto() {
         const providerDto = new ProviderDTO(this.name, this.birthdate);
         providerDto.id = this.id;
+        providerDto.addresses = this.addresses as any[];
         providerDto.orders = this.orders as unknown[] as OrderDTO[];
         providerDto.complaints = this.complaints as unknown[] as ComplaintDTO[];
         return providerDto;

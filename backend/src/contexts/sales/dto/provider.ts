@@ -25,6 +25,7 @@ export class ProviderDTO {
     }
 
     static fromUI(dataProvider: any) {
+        dataProvider.birthdate = new Date(dataProvider.birthdate);
         return dataProvider as unknown as ProviderDTO;
     }
 

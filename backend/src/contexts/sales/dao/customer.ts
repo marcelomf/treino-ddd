@@ -8,16 +8,23 @@ export class CustomerDAO extends Orm implements PersistenceDb {
         dataCustomer.orders = { create: dataCustomer.orders };
         dataCustomer.complaints = { create: dataCustomer.complaints };
 
-        await this.prisma.provider.create({
-            data: customerDto.toORM(),
-            include: {
-                addresses: true
-            }
-        });
+        if(dataCustomer.id) {
+            await this.prisma.customer.update({
+                data: dataCustomer,
+                where: {id: dataCustomer.id}
+            });
+        } else {
+            await this.prisma.customer.create({
+                data: dataCustomer,
+                include: {
+                    addresses: true
+                }
+            });
+        }
     }
 
     async removeDb(customerId: string) {
-        await this.prisma.provider.delete({
+        await this.prisma.customer.delete({
             where:{
                 id: customerId
             },
@@ -28,7 +35,7 @@ export class CustomerDAO extends Orm implements PersistenceDb {
     }
 
     async findByIdDb(customerId: string) {
-        return await this.prisma.provider.findUnique({
+        return await this.prisma.customer.findUnique({
             where: {
                 id: customerId
             },
@@ -39,7 +46,7 @@ export class CustomerDAO extends Orm implements PersistenceDb {
     }
 
     async findAllDb() {
-        return await this.prisma.provider.findMany({
+        return await this.prisma.customer.findMany({
             include: {
                 addresses: true
             }
@@ -47,7 +54,7 @@ export class CustomerDAO extends Orm implements PersistenceDb {
     }
     
     async countDb() {
-        return await this.prisma.provider.count();
+        return await this.prisma.customer.count();
     }
 
 }
