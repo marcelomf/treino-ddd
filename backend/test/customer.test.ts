@@ -1,8 +1,8 @@
 import {describe, expect, test} from '@jest/globals';
-import { Customer } from '../src/contexts/people/entities/customer';
+import { Customer } from '../src/contexts/sales/entities/customer';
 import { Order } from '../src/contexts/sales/entities/order';
-import { Genre } from '../src/contexts/people/vo/genre';
-import { CustomerDTO } from '../src/contexts/people/dto/customer';
+import { Genre } from '../src/contexts/sales/vo/genre';
+import { CustomerDTO } from '../src/contexts/sales/dto/customer';
 
 describe('customer entity', () => {
   test('rating customer', () => {

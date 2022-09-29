@@ -35,7 +35,7 @@ const app: FastifyPluginAsync<AppOptions> = async (
   })
 
   void fastify.register(AutoLoad, {
-    dir: join(__dirname, 'routes', 'people'),
+    dir: join(__dirname, 'routes', 'sales'),
     options: opts
   })
 

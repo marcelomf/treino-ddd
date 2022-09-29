@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 export interface PersistenceDb {
     saveDb: (baseDTO: any) => void;
     removeDb: (id: string) => void;
-    findByIdDb: (id: string) => void;
+    findByIdDb: (id: string) => Promise<any>;
     findAllDb: () => Promise<any[]>;
     countDb: () => Promise<number>;
 }

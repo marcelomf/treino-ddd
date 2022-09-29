@@ -1,5 +1,5 @@
 import { FastifyPluginAsync } from "fastify"
-import { CustomerController } from "../../controllers/people/customer";
+import { CustomerController } from "../../controllers/sales/customer";
 
 const customer: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.post('/customer', CustomerController.save);

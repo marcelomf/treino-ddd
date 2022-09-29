@@ -1,12 +1,12 @@
 import {describe, expect, test} from '@jest/globals';
-import {Provider} from '../src/contexts/people/entities/provider';
-import {Customer} from '../src/contexts/people/entities/customer';
+import {Provider} from '../src/contexts/sales/entities/provider';
+import {Customer} from '../src/contexts/sales/entities/customer';
 import {Order} from '../src/contexts/sales/entities/order';
-import {Genre} from '../src/contexts/people/vo/genre';
-import { CustomerDTO } from '../src/contexts/people/dto/customer';
-import { ProviderDTO } from '../src/contexts/people/dto/provider';
-import { Complaint } from '../src/contexts/people/entities/complaint';
-import { ComplaintDTO } from '../src/contexts/people/dto/complaint';
+import {Genre} from '../src/contexts/sales/vo/genre';
+import { CustomerDTO } from '../src/contexts/sales/dto/customer';
+import { ProviderDTO } from '../src/contexts/sales/dto/provider';
+import { Complaint } from '../src/contexts/sales/entities/complaint';
+import { ComplaintDTO } from '../src/contexts/sales/dto/complaint';
 
 describe('provider entity', () => {
   test('rating provider', () => {

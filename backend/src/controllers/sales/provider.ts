@@ -1,10 +1,10 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { CustomerAppService } from '../../services/people/customer';
+import { ProviderAppService } from '../../services/sales/provider';
 
-export class CustomerController {
+export class ProviderController {
     static async save(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return await CustomerAppService.save(request.body);
+            await ProviderAppService.save(request.body);
         } catch (e) {
             reply.code(400);
             return e;
@@ -13,7 +13,7 @@ export class CustomerController {
 
     static async remove(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return await CustomerAppService.remove(request.params);
+            await ProviderAppService.remove(request.params);
         } catch (e) {
             reply.code(400);
             return e;
@@ -22,7 +22,7 @@ export class CustomerController {
 
     static async findById(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return await CustomerAppService.findById(request.params);
+            return await ProviderAppService.findById(request.params);
         } catch (e) {
             reply.code(400);
             return e;
@@ -31,7 +31,7 @@ export class CustomerController {
 
     static async findAll(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return await CustomerAppService.findAll();
+            return await ProviderAppService.findAll();
         } catch (e) {
             reply.code(400);
             return e;
@@ -40,7 +40,7 @@ export class CustomerController {
 
     static async count(request: FastifyRequest, reply: FastifyReply) {
         try {
-            return await CustomerAppService.count();
+            return await ProviderAppService.count();
         } catch (e) {
             reply.code(400);
             return e;

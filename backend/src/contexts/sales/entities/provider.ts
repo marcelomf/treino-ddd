@@ -1,9 +1,10 @@
 import { Person } from './person';
 import { CustomerService } from './customer_service';
-import { Order } from '../../sales/entities/order';
+import { Order } from './order';
 import { ProviderDTO } from '../dto/provider';
 import { Complaint } from './complaint';
 import { ComplaintDTO } from '../dto/complaint';
+import { OrderDTO } from '../dto/order';
 
 export class Provider extends Person implements CustomerService {
     
@@ -21,6 +22,7 @@ export class Provider extends Person implements CustomerService {
     toDto() {
         const providerDto = new ProviderDTO(this.name, this.birthdate);
         providerDto.id = this.id;
+        providerDto.orders = this.orders as unknown[] as OrderDTO[];
         providerDto.complaints = this.complaints as unknown[] as ComplaintDTO[];
         return providerDto;
     }

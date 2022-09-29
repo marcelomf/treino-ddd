@@ -1,4 +1,4 @@
-import { OrderDTO } from "../../sales/dto/order";
+import { OrderDTO } from "./order";
 import { Address } from "../vo/address";
 import { Genre } from "../vo/genre";
 import { ComplaintDTO } from "./complaint";
@@ -37,9 +37,9 @@ export class CustomerDTO {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            addresses: this.addresses,
-            orders: this.orders,
-            complaints: this.complaints
+            addresses: this.addresses as any[],
+            orders: this.orders as any[],
+            complaints: this.complaints as any[]
         } as any
     }
 
@@ -60,9 +60,9 @@ export class CustomerDTO {
             name: this.name,
             birthdate: this.birthdate,
             genre: this.genre,
-            addresses: this.addresses,
-            orders: this.orders,
-            complaints: this.complaints
+            addresses: this.addresses as any[],
+            orders: this.orders as any[],
+            complaints: this.complaints as any[]
         }
     }
 }

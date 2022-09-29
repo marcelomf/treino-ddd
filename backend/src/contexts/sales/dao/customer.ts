@@ -1,25 +1,25 @@
 import { PersistenceDb, Orm } from "../../../utils/persistence_db";
-import { ProviderDTO } from "../dto/provider";
-export class ProviderDAO extends Orm implements PersistenceDb {
+import { CustomerDTO } from "../dto/customer";
+export class CustomerDAO extends Orm implements PersistenceDb {
 
-    async saveDb(providerDto: ProviderDTO) {
-        const dataProvider = providerDto.toORM();
-        dataProvider.addresses = { create: dataProvider.addresses };
-        dataProvider.orders = { create: dataProvider.orders };
-        dataProvider.complaints = { create: dataProvider.complaints };
+    async saveDb(customerDto: CustomerDTO) {
+        const dataCustomer = customerDto.toORM();
+        dataCustomer.addresses = { create: dataCustomer.addresses };
+        dataCustomer.orders = { create: dataCustomer.orders };
+        dataCustomer.complaints = { create: dataCustomer.complaints };
 
-        return await this.prisma.provider.create({
-            data: dataProvider,
+        await this.prisma.provider.create({
+            data: customerDto.toORM(),
             include: {
                 addresses: true
             }
         });
     }
 
-    async removeDb(providerId: string) {
-        return await this.prisma.provider.delete({
+    async removeDb(customerId: string) {
+        await this.prisma.provider.delete({
             where:{
-                id: providerId
+                id: customerId
             },
             include: {
                 addresses: true
@@ -27,10 +27,10 @@ export class ProviderDAO extends Orm implements PersistenceDb {
         })
     }
 
-    async findByIdDb(providerId: string) {
+    async findByIdDb(customerId: string) {
         return await this.prisma.provider.findUnique({
             where: {
-                id: providerId
+                id: customerId
             },
             include: {
                 addresses: true

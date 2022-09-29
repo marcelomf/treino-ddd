@@ -1,10 +1,12 @@
 import { Person } from './person';
-import { Order } from '../../sales/entities/order'
+import { Order } from './order'
 import dayjs from 'dayjs';
 import { CustomerDTO } from '../dto/customer';
-import { OrderDTO } from '../../sales/dto/order';
+import { OrderDTO } from '../dto/order';
 import { CustomerService } from './customer_service';
 import { Complaint } from './complaint';
+import { Address } from '../vo/address';
+import { ComplaintDTO } from '../dto/complaint';
 
 export class Customer extends Person implements CustomerService {
     
@@ -28,6 +30,7 @@ export class Customer extends Person implements CustomerService {
     }
 
     addComplaint(complaint: Complaint){
+        if(!this.complaints) this.complaints = [];
         this.complaints.push(complaint);
     }
 
@@ -35,8 +38,9 @@ export class Customer extends Person implements CustomerService {
         const customerDto = new CustomerDTO(this.name, this.birthdate, this.genre!);
         customerDto.id = this.id;
         customerDto.only18Plus = this.only18Plus;
-        customerDto.addresses = this.addresses;
+        customerDto.addresses = this.addresses as unknown[] as Address[];;
         customerDto.orders = this.orders as unknown[] as OrderDTO[];
+        customerDto.complaints = this.complaints as unknown[] as ComplaintDTO[];
         return customerDto;
     }
 

@@ -10,11 +10,11 @@ export class CustomerRepository {
     }
     
     async saveDb(customerDto: CustomerDTO) {
-        return await this.customerDao.saveDb(customerDto);
+        await this.customerDao.saveDb(customerDto);
     }
 
     async removeDb(customerId: string) {
-        return await this.customerDao.removeDb(customerId);
+        await this.customerDao.removeDb(customerId);
     }
 
     async findByIdDb(customerId: string): Promise<CustomerDTO> {

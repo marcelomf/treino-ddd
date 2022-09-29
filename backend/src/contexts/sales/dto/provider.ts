@@ -1,4 +1,4 @@
-import { OrderDTO } from "../../sales/dto/order";
+import { OrderDTO } from "./order";
 import { Address } from "../vo/address";
 import { ComplaintDTO } from "./complaint";
 export class ProviderDTO {
