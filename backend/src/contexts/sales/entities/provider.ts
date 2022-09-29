@@ -42,7 +42,7 @@ export class Provider extends Person implements CustomerService {
         this.orders.push(order);
     }
 
-    processSale(order: Order) {
+    validSales() {
         if(this.complaints && this.complaints.length >= 3) {
             throw new Error("Provider can't be able to process sale. Excepted max numbers(3) of complaints!");
         }

@@ -5,30 +5,19 @@ export class OrderDTO {
     items?: OrderItemDTO[];
 
     static fromORM(dataOrder: any) {
-        const orderDto = new OrderDTO();
-        orderDto.id = dataOrder.id;
-        orderDto.items = dataOrder.items || [];
-        return orderDto;
+        return dataOrder as unknown as OrderDTO;
     }
 
-    toORM() {
-        return {
-            id: this.id,
-            items: this.items || []
-        }
+    toORM(): any {
+        const objReturn: any = this as any;
+        return objReturn;
     }
 
     static fromUI(dataOrder: any) {
-        const orderDto = new OrderDTO();
-        orderDto.id = dataOrder.id;
-        orderDto.items = dataOrder.items || [];
-        return orderDto;
+        return dataOrder as unknown as OrderDTO;
     }
 
     toUI() {
-        return {
-            id: this.id,
-            items:this.items || []
-        }
+        return this as any;
     }
 }

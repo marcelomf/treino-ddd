@@ -4,9 +4,7 @@ import { ProviderRepository } from "../../contexts/sales/repositories/provider";
 
 export class ProviderAppService {
     static async save(dataProviderUI: any) {
-        console.log(dataProviderUI);
         const providerDto = ProviderDTO.fromUI(dataProviderUI);
-        console.log(providerDto);
         const provider = new Provider(providerDto);
         const providerRepository = new ProviderRepository();
         await providerRepository.saveDb(provider.toDto());
