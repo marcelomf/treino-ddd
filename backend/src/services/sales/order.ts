@@ -7,7 +7,7 @@ export class OrderAppService {
         const orderDto = OrderDTO.fromUI(dataOrderUI);
         const order = new Order(orderDto);
         order.processSale();
-        const providerRepository = new OrderRepository();
-        await providerRepository.saveDb(order.toDto());
+        const orderRepository = new OrderRepository();
+        await orderRepository.saveDb(order.toDto());
     }
 }
