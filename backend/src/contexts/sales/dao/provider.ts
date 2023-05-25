@@ -8,12 +8,19 @@ export class ProviderDAO extends Orm implements PersistenceDb {
         dataProvider.orders = { create: dataProvider.orders };
         dataProvider.complaints = { create: dataProvider.complaints };
 
-        await this.prisma.provider.create({
-            data: dataProvider,
-            include: {
-                addresses: true
-            }
-        });
+        if(dataProvider.id) {
+            await this.prisma.provider.update({
+                data: dataProvider,
+                where: {id: dataProvider.id}
+            });
+        } else {
+            await this.prisma.provider.create({
+                data: dataProvider,
+                include: {
+                    addresses: true
+                }
+            });
+        }
     }
 
     async removeDb(providerId: string) {
